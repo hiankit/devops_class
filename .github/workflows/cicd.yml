@@ -13,15 +13,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v3
         with:
           python-version: 3.9
 
       - name: List Files
         run: |
-          python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-      - name: Run Tests
-        run: |
-          echo "hello world"
