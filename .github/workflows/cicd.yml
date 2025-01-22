@@ -28,7 +28,7 @@ jobs:
           # Strict errors
           flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
           # Warnings and style checks
-          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=100 --statistics
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=120 --statistics
 
   build:
     name: Build and Test
@@ -50,11 +50,12 @@ jobs:
 
       - name: Run Unit Tests
         run: |
-          pytest --maxfail=5 --disable-warnings --cov=. -v
+          pytest -v
 
-      - name: Upload Test Coverage
-        if: success()
-        uses: actions/upload-artifact@v3
-        with:
-          name: coverage-report
-          path: coverage.xml
+      # - name: Upload Test Coverage
+      
+      #   if: success()
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: coverage-report
+      #     path: coverage.xml
