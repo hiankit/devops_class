@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - My Flask Application</title>
+    <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
+    <script src="/static/scripts/modernizr-2.6.2.js"></script>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('home') }}">Application Name</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('services') }}">Services</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="container mt-5 pt-5">
+        <div class="row">
+            <!-- Profile Picture and Basic Info -->
+            <div class="col-md-4">
+                <img src="/static/images/ankit_sharma.jpg" alt="Ankit Sharma" class="img-fluid rounded-circle mb-4" />
+                <h2 class="text-center">Ankit Sharma</h2>
+                <p class="text-center text-muted">Software Engineer | Entrepreneur | Educator</p>
+            </div>
+
+            <!-- Profile Details -->
+            <div class="col-md-8">
+                <h3>About Me</h3>
+                <p>
+                    Hello! I am Ankit Sharma, a passionate software engineer with expertise in full-stack development and digital marketing.
+                    Currently pursuing my Master's in Software Engineering at EPITA College, Paris, France. I am also the founder of Achievers,
+                    a startup providing social media marketing services to B2C businesses.
+                </p>
+                
+                <h3>Education</h3>
+                <ul>
+                    <li>Master's in Software Engineering - EPITA College, France</li>
+                    <li>Bachelor's in Computer Science - XYZ University, Nepal</li>
+                </ul>
+
+                <h3>Skills & Technologies</h3>
+                <ul>
+                    <li>C++, Python, JavaScript, HTML, CSS</li>
+                    <li>Flask, Node.js, React</li>
+                    <li>Social Media Marketing, SEO, Google Analytics</li>
+                </ul>
+
+                <h3>Contact Information</h3>
+                <p>Email: ankit.sharma@example.com</p>
+                <p>LinkedIn: <a href="https://www.linkedin.com/in/ankitsharma">linkedin.com/in/ankitsharma</a></p>
+                <p>Twitter: <a href="https://twitter.com/ankitsharma">@ankitsharma</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; {{ year }} - My Flask Application</p>
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="/static/scripts/jquery-3.6.0.min.js"></script>
+    <script src="/static/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/static/scripts/respond.js"></script>
+
+    <!-- Custom Scripts Block -->
+    {% block scripts %}{% endblock %}
+</body>
+</html>
