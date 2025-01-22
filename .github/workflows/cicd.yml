@@ -1,4 +1,4 @@
-name: Python Package
+name: CI/CD Pipeline
 
 on:
   push:
@@ -7,48 +7,32 @@ on:
   pull_request:
     branches:
       - main
-
 jobs:
-  lint:
-    name: Lint Check
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-
-      - name: Install and Run flake8
-        run: |
-          python -m pip install --upgrade pip flake8
-          # Strict errors
-          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-          # Warnings and style checks
-          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=120 --statistics
-
   build:
-    name: Build and Test
     runs-on: ubuntu-latest
-
     steps:
-      - name: Check out code
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - name: Setup python 3.9
+        uses: actions/setup-python@v3
         with:
-          python-version: '3.9'
+          python-version: 3.9
 
-      - name: Install Dependencies
+      - name: list files
+        run: |
+          tree
+
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Unit Tests
+      - name: Lint Check
+        run: |
+          pip install flake8
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=120 --statistics
+
+      - name: Unit Test
         run: |
           pytest -v
 
